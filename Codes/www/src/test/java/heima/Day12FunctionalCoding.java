@@ -2,6 +2,8 @@ package heima;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
@@ -96,9 +98,16 @@ public class Day12FunctionalCoding {
 
         String[] arr = { "aaa", "bbbb", "ccccc" };
 
-        Arrays.sort(arr, getComparatorByLambda());
+        // Arrays.sort(arr, getComparatorByLambda());
+
+        Arrays.sort(arr, (o1,o2) -> o1.length() - o2.length());
 
         System.out.println(Arrays.toString(arr));
     }
-    
+
+    @Test
+    void basicTypeTurnToBoxedTypeTest(){
+        
+    }
+
 }

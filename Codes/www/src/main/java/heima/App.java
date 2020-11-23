@@ -1,5 +1,8 @@
 package heima;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.FutureTask;
+
 /**
  * Hello world!
  */
@@ -13,9 +16,65 @@ public final class App {
      */
     
     public static void main(String[] args){
-        App app = new App();
-        Thread3 thread3 = app.new Thread3();
-        thread3.start();
+
+        Object concurrentObject = new Object();
+        // 对多线程wait()的理解
+        Thread t1 = new Thread(new Runnable(){
+            @Override
+            public void run(){
+                synchronized(concurrentObject){
+                    try {
+                        concurrentObject.wait(); 
+                        // concurrentObject.notify();
+                        System.out.println("t1获得了同步对象的锁");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        Thread t2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                synchronized (concurrentObject) {
+                    try {
+                        concurrentObject.wait();
+                        System.out.println("t2获得了同步对象的锁");
+                        concurrentObject.notify();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        Thread t3 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                synchronized (concurrentObject) {
+                    try {
+                        System.out.println("t3获得了同步对象的锁");
+                        concurrentObject.notify();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        t2.start();
+        t1.start();
+        t3.start();
+
+        FutureTask<Integer> ft = new FutureTask<>(new Callable<Integer>(){
+            @Override
+            public Integer call(){
+                System.out.println("使用Callable接口!");
+                return 123;
+            }
+        });
+        Thread thread = new Thread(ft);
+        thread.start();
+
+
     }
     class Thread1 extends Thread{
         @Override
