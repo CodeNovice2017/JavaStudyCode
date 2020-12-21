@@ -17,63 +17,7 @@ public final class App {
     
     public static void main(String[] args){
 
-        Object concurrentObject = new Object();
-        // 对多线程wait()的理解
-        Thread t1 = new Thread(new Runnable(){
-            @Override
-            public void run(){
-                synchronized(concurrentObject){
-                    try {
-                        concurrentObject.wait(); 
-                        // concurrentObject.notify();
-                        System.out.println("t1获得了同步对象的锁");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-        Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                synchronized (concurrentObject) {
-                    try {
-                        concurrentObject.wait();
-                        System.out.println("t2获得了同步对象的锁");
-                        concurrentObject.notify();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-        Thread t3 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                synchronized (concurrentObject) {
-                    try {
-                        System.out.println("t3获得了同步对象的锁");
-                        concurrentObject.notify();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-        t2.start();
-        t1.start();
-        t3.start();
-
-        FutureTask<Integer> ft = new FutureTask<>(new Callable<Integer>(){
-            @Override
-            public Integer call(){
-                System.out.println("使用Callable接口!");
-                return 123;
-            }
-        });
-        Thread thread = new Thread(ft);
-        thread.start();
-
+        System.out.println(-1%10);
 
     }
     class Thread1 extends Thread{
@@ -118,3 +62,5 @@ public final class App {
         }
     }
 }
+
+
