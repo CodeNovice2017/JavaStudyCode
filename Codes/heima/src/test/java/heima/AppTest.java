@@ -1,4 +1,4 @@
-package DailyTest;
+package heima;
 
 import org.junit.jupiter.api.Test;
 
