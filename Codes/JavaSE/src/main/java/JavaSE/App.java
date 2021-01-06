@@ -1,6 +1,7 @@
 package JavaSE;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.CyclicBarrier;
 
 import JavaSE.EnumTest.CountryEnum;
 
@@ -29,5 +30,7 @@ public final class App {
 
         countDownLatch.await();
         System.out.println(Thread.currentThread().getName() + "秦国统一成功!");
+
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(0);
     }
 }

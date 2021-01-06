@@ -27,7 +27,11 @@ public final class App {
         //     new Thread(() -> SingletonDemo.getInstance(), String.valueOf(i)).start();
         // }
 
-        reentrantLockTest();
+        // reentrantLockTest();
+
+        // shareDataTest();
+
+        shareDataTest2();
     }
 
     // 单例模式测试
@@ -93,5 +97,42 @@ public final class App {
     // while循环 + compareAndSet实现自旋锁
     static void whileAndCASImplementsLock(){
         AtomicReference<Thread> atomicReference = new AtomicReference<>();
+    }
+
+    // 生产者 消费者模式2.0测试
+    static void shareDataTest(){
+        ShareData shareData = new ShareData();
+        for (int i = 0; i < 5; i++) {
+            new Thread(() -> {
+                shareData.increment();
+            },"生产者" + i).start();
+        }
+        for (int i = 0; i < 5; i++) {
+            new Thread(() -> {
+                shareData.decrement();
+            }, "消费者" + i).start();
+        }
+    }
+
+    // 多线程按顺序执行
+    static void shareDataTest2(){
+        ShareData shareData = new ShareData();
+
+        // 三个线程
+        new Thread(() -> {
+            for (int i = 0; i < 10; i++) {
+                shareData.printA();                
+            }
+        }).start();
+        new Thread(() -> {
+            for (int i = 0; i < 10; i++) {
+                shareData.printB();
+            }
+        }).start();
+        new Thread(() -> {
+            for (int i = 0; i < 10; i++) {
+                shareData.printC();
+            }
+        }).start();
     }
 }
