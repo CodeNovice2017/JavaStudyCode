@@ -1,5 +1,11 @@
 package juc;
 
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Lock;
@@ -31,7 +37,12 @@ public final class App {
 
         // shareDataTest();
 
-        shareDataTest2();
+        // shareDataTest2();
+
+        // ProducerAndConsumer3Test();
+
+        threadPoolTest();
+
     }
 
     // 单例模式测试
@@ -134,5 +145,76 @@ public final class App {
                 shareData.printC();
             }
         }).start();
+    }
+
+    static void ProducerAndConsumer3Test(){
+        ProducerAndConsumer3 producerAndConsumer3 = new ProducerAndConsumer3(new ArrayBlockingQueue<String>(10));
+        new Thread(() -> {
+            System.out.println(Thread.currentThread().getName() + "\t 生产线程启动");
+            System.out.println("");
+            System.out.println("");
+            try {
+                producerAndConsumer3.myProducerProcess();
+                System.out.println("");
+                System.out.println("");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }, "prod").start();
+
+        new Thread(() -> {
+            System.out.println(Thread.currentThread().getName() + "\t 消费线程启动");
+
+            try {
+                producerAndConsumer3.myConsumerProcess();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }, "consumer").start();
+
+        // 让主线程睡眠,这样才能够在控制台看到输出
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("");
+        System.out.println("");
+        System.out.println("5秒中后，生产和消费线程停止，线程结束");
+        producerAndConsumer3.stop();
+    }
+
+    static void threadPoolTest(){
+        System.out.println(Runtime.getRuntime().availableProcessors());
+        
+        ExecutorService executorService = Executors.newCachedThreadPool();
+
+        try {
+            for (int i = 0; i < 10; i++) {
+                executorService.execute(() -> {
+                    System.out.println(Thread.currentThread().getName() + "开始执行任务");
+                });
+                try {
+                    TimeUnit.MILLISECONDS.sleep(200);
+                } catch (Exception e) {
+                    // TODO: handle exception
+                }
+            }
+        } catch (Exception e) {
+            //TODO: handle exception
+        } finally{
+            executorService.shutdown();
+        }
+
+        ExecutorService executorService2 = new ThreadPoolExecutor(
+            2, 
+            5, 
+            1L, 
+            TimeUnit.SECONDS, 
+            new LinkedBlockingQueue<>(3), 
+            Executors.defaultThreadFactory(), 
+            new ThreadPoolExecutor.AbortPolicy()
+        );
     }
 }
