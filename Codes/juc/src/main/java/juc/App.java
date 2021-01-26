@@ -41,7 +41,9 @@ public final class App {
 
         // ProducerAndConsumer3Test();
 
-        threadPoolTest();
+        // threadPoolTest();
+
+        System.out.println(-122 & 1);
 
     }
 
