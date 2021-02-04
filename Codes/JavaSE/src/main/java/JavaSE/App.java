@@ -22,7 +22,9 @@ public final class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello World!");
         // testEnumAndCountDownLatch();
-        testArrayToCollection();
+        // testArrayToCollection();
+        // System.out.println(1 & 4);
+        testStringFunctionSplit();
     }
 
     static void testEnumAndCountDownLatch(){
@@ -60,5 +62,22 @@ public final class App {
         String[] a = new String[1];
         String[] aa = list.toArray(a);
         Arrays.stream(aa).forEach(System.out::println);
+    }
+
+    static void testStringFunctionSplit(){
+        String s1 = new String("abc.d.e");
+        String s2 = new String("abc.d.e.");
+        String s3 = new String("abc.d.e.");
+        String s4 = new String(".abc.d.e");
+
+        System.out.println(Arrays.toString(s1.split("\\.")));
+        System.out.println(Arrays.toString(s1.split("\\.",1)));
+        System.out.println(s1.split("\\.", 1).length);
+        System.out.println(Arrays.toString(s2.split("\\.")));
+        System.out.println(Arrays.toString(s3.split("\\.",-1)));
+        System.out.println((s3.split("\\.",-1).length));
+        System.out.println(Arrays.toString(s4.split("\\.")));
+        System.out.println(Arrays.toString(s3.split("\\.")));
+        System.out.println((s3.split("\\.").length));
     }
 }
