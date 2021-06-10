@@ -5,16 +5,16 @@ import java.lang.reflect.Method;
 
 public class UserHandler implements InvocationHandler {
 
-    private UserDao userDao;
+    private Object target;
 
-    public UserHandler(UserDao userDao) {
-        this.userDao = userDao;
+    public UserHandler(Object target) {
+        this.target = target;
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         saveUserStart();
-        Object obj = method.invoke(userDao, args);
+        Object obj = method.invoke(target, args);
         saveUserDone();
         return obj;
     }
