@@ -11,9 +11,10 @@
         <module name="JavaSE" />
         <module name="jvm" />
         <module name="DynamicAgent" />
+        <module name="JavaSPI" />
         <module name="heima" />
         <module name="juc" />
-        <module name="JavaSPI" />
+        <module name="SpringBoot" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -23,6 +24,7 @@
       <module name="JavaSPI" target="1.8" />
       <module name="juc" target="1.8" />
       <module name="jvm" target="1.8" />
+      <module name="SpringBoot" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

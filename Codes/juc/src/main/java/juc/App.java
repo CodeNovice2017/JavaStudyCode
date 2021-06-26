@@ -1,11 +1,6 @@
 package juc;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Lock;
@@ -20,7 +15,7 @@ public final class App {
 
     /**
      * Says hello to the world.
-     * 
+     *
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
@@ -43,8 +38,26 @@ public final class App {
 
         // threadPoolTest();
 
-        System.out.println(-122 & 1);
+        PrintOddAndEvenNumbersInOrder printOddAndEvenNumbersInOrder = new PrintOddAndEvenNumbersInOrder();
+        new Thread(printOddAndEvenNumbersInOrder::printNumbers).start();
+        new Thread(printOddAndEvenNumbersInOrder::printNumbers).start();
 
+//        while(Thread.activeCount() > 2){
+//            Thread.yield();
+//        }
+
+        FutureTask<Integer> futureTask = new FutureTask<>(() -> {
+            for(int i = 0;i < 50;i++){
+                System.out.println(i);
+            }
+            return 50;
+        });
+        new Thread(futureTask).start();
+        try{
+            System.out.println(futureTask.get());
+        }catch (InterruptedException | ExecutionException e){
+            e.printStackTrace();
+        }
     }
 
     // 单例模式测试
@@ -134,7 +147,7 @@ public final class App {
         // 三个线程
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
-                shareData.printA();                
+                shareData.printA();
             }
         }).start();
         new Thread(() -> {
@@ -189,7 +202,7 @@ public final class App {
 
     static void threadPoolTest(){
         System.out.println(Runtime.getRuntime().availableProcessors());
-        
+
         ExecutorService executorService = Executors.newCachedThreadPool();
 
         try {
@@ -210,12 +223,12 @@ public final class App {
         }
 
         ExecutorService executorService2 = new ThreadPoolExecutor(
-            2, 
-            5, 
-            1L, 
-            TimeUnit.SECONDS, 
-            new LinkedBlockingQueue<>(3), 
-            Executors.defaultThreadFactory(), 
+            2,
+            5,
+            1L,
+            TimeUnit.SECONDS,
+            new LinkedBlockingQueue<>(3),
+            Executors.defaultThreadFactory(),
             new ThreadPoolExecutor.AbortPolicy()
         );
     }
