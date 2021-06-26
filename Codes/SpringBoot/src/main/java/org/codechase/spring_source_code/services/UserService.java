@@ -1,5 +1,6 @@
 package org.codechase.spring_source_code.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,4 +10,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserService {
 
+    @Autowired
+    IndexService indexService;
+
+    public void getService(){
+        System.out.println(indexService.say());
+    }
 }

@@ -13,4 +13,7 @@ public class IndexService {
     @Autowired
     UserService userService;
 
+    public String say(){
+        return "ABC";
+    }
 }

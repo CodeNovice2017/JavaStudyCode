@@ -23,10 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66c61d22-544f-40a9-a81c-5ab074ae0d68" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SpringBoot/src/main/java/org/codechase/spring_source_code/services/IndexService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpringBoot/src/main/java/org/codechase/spring_source_code/services/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/juc/src/main/java/juc/PrintOddAndEvenNumbersInOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/juc/src/main/java/juc/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/juc/src/main/java/juc/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpringBoot/src/main/java/org/codechase/spring_source_code/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpringBoot/src/main/java/org/codechase/spring_source_code/SpringSourceCodeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpringBoot/src/main/java/org/codechase/spring_source_code/SpringSourceCodeApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpringBoot/src/main/java/org/codechase/spring_source_code/services/IndexService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpringBoot/src/main/java/org/codechase/spring_source_code/services/IndexService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpringBoot/src/main/java/org/codechase/spring_source_code/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpringBoot/src/main/java/org/codechase/spring_source_code/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpringBoot/src/test/java/org/codechase/spring_source_code/SpringSourceCodeApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpringBoot/src/test/java/org/codechase/spring_source_code/SpringSourceCodeApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +79,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="JUnit.SpringSourceCodeApplicationTests.contextLoads">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="juc.App" />
       <module name="juc" />
@@ -112,6 +113,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringSourceCodeApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SpringBoot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.codechase.spring_source_code.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.codechase.spring_source_code" />
+      <option name="MAIN_CLASS_NAME" value="org.codechase.spring_source_code.SpringSourceCodeApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SpringSourceCodeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="SpringBoot" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.codechase.spring_source_code.SpringSourceCodeApplication" />
@@ -121,6 +149,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SpringSourceCodeApplicationTests.contextLoads" />
         <item itemvalue="Application.App" />
         <item itemvalue="Application.SPIDemo" />
         <item itemvalue="Application.GCRootDemo" />
@@ -137,6 +166,7 @@
       <updated>1624149355416</updated>
       <workItem from="1624149356451" duration="10571000" />
       <workItem from="1624670509661" duration="2193000" />
+      <workItem from="1624677799941" duration="3396000" />
     </task>
     <servers />
   </component>
