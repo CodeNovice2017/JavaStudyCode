@@ -19,45 +19,7 @@ public final class App {
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
-        System.out.println("Hello World!");
 
-        // testSingletonDemo();
-
-        // 单例模式测试
-        // for (int i = 0; i < 10; i++) {
-        //     new Thread(() -> SingletonDemo.getInstance(), String.valueOf(i)).start();
-        // }
-
-        // reentrantLockTest();
-
-        // shareDataTest();
-
-        // shareDataTest2();
-
-        // ProducerAndConsumer3Test();
-
-        // threadPoolTest();
-
-        PrintOddAndEvenNumbersInOrder printOddAndEvenNumbersInOrder = new PrintOddAndEvenNumbersInOrder();
-        new Thread(printOddAndEvenNumbersInOrder::printNumbers).start();
-        new Thread(printOddAndEvenNumbersInOrder::printNumbers).start();
-
-//        while(Thread.activeCount() > 2){
-//            Thread.yield();
-//        }
-
-        FutureTask<Integer> futureTask = new FutureTask<>(() -> {
-            for(int i = 0;i < 50;i++){
-                System.out.println(i);
-            }
-            return 50;
-        });
-        new Thread(futureTask).start();
-        try{
-            System.out.println(futureTask.get());
-        }catch (InterruptedException | ExecutionException e){
-            e.printStackTrace();
-        }
     }
 
     // 单例模式测试
