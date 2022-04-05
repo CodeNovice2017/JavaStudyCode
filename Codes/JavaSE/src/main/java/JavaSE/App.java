@@ -1,16 +1,20 @@
 package JavaSE;
 
+import JavaSE.EnumTest.CountryEnum;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
 
-import JavaSE.EnumTest.CountryEnum;
-
 /**
- * Hello world!
- */
+ * class_name: App
+ * package: JavaSE
+ * creat_user: CodeChase
+ * creat_date: 4/5/2022
+ * creat_time: 11:04 PM
+ **/
 public final class App {
     private App() {
     }
