@@ -1,6 +1,7 @@
 package JavaSE;
 
 import JavaSE.EnumTest.CountryEnum;
+import JavaSE.Regex.PatternMatcherStudy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,11 +25,9 @@ public final class App {
      * @param args The arguments of the program.
      */
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello World!");
-        // testEnumAndCountDownLatch();
-        // testArrayToCollection();
-        // System.out.println(1 & 4);
-        testStringFunctionSplit();
+
+        testRegex();
+
     }
 
     static void testEnumAndCountDownLatch(){
@@ -57,9 +56,6 @@ public final class App {
         // 方法二，传入一个指定类型对象
         Integer[] integerAry2 = integerList.toArray(new Integer[0]);
         Arrays.stream(integerAry2).forEach(System.out::println);
-
-        
-
         List<String> list = new ArrayList<>();
         list.add("aa");
         list.add("bb");
@@ -83,5 +79,9 @@ public final class App {
         System.out.println(Arrays.toString(s4.split("\\.")));
         System.out.println(Arrays.toString(s3.split("\\.")));
         System.out.println((s3.split("\\.").length));
+    }
+
+    static void testRegex(){
+        PatternMatcherStudy.func();
     }
 }
