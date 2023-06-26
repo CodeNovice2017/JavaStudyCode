@@ -22,6 +22,7 @@ public final class App {
 
     /**
      * Says hello to the world.
+     *
      * @param args The arguments of the program.
      */
     public static void main(String[] args) throws Exception {
@@ -30,7 +31,7 @@ public final class App {
 
     }
 
-    static void testEnumAndCountDownLatch(){
+    static void testEnumAndCountDownLatch() {
         CountDownLatch countDownLatch = new CountDownLatch(2);
 
         for (int i = 1; i <= 2; i++) {
@@ -42,14 +43,14 @@ public final class App {
         try {
             countDownLatch.await();
         } catch (Exception e) {
-            //TODO: handle exception
+            // TODO: handle exception
         }
         System.out.println(Thread.currentThread().getName() + "秦国统一成功!");
 
         CyclicBarrier cyclicBarrier = new CyclicBarrier(0);
     }
 
-    static void testArrayToCollection(){
+    static void testArrayToCollection() {
         List<Integer> integerList = Arrays.asList(1, 3, 2);
         // // 方法一，强制转换
         // Integer[] integerAry = (Integer[]) integerList.toArray();
@@ -64,24 +65,24 @@ public final class App {
         Arrays.stream(aa).forEach(System.out::println);
     }
 
-    static void testStringFunctionSplit(){
+    static void testStringFunctionSplit() {
         String s1 = new String("abc.d.e");
         String s2 = new String("abc.d.e.");
         String s3 = new String("abc.d.e.");
         String s4 = new String(".abc.d.e");
 
         System.out.println(Arrays.toString(s1.split("\\.")));
-        System.out.println(Arrays.toString(s1.split("\\.",1)));
+        System.out.println(Arrays.toString(s1.split("\\.", 1)));
         System.out.println(s1.split("\\.", 1).length);
         System.out.println(Arrays.toString(s2.split("\\.")));
-        System.out.println(Arrays.toString(s3.split("\\.",-1)));
-        System.out.println((s3.split("\\.",-1).length));
+        System.out.println(Arrays.toString(s3.split("\\.", -1)));
+        System.out.println((s3.split("\\.", -1).length));
         System.out.println(Arrays.toString(s4.split("\\.")));
         System.out.println(Arrays.toString(s3.split("\\.")));
         System.out.println((s3.split("\\.").length));
     }
 
-    static void testRegex(){
+    static void testRegex() {
         PatternMatcherStudy.func();
     }
 }
